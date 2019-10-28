@@ -24,11 +24,9 @@ export class LineParser extends stream.Transform {
   debug = false;
   delimiter = '\n';
   
-  
   constructor(opts ?: JSONParserOpts) {
     
     super({objectMode: true});
-    
     
     if (opts && 'debug' in opts) {
       assert.strictEqual(typeof opts.debug, 'boolean', '"debug" option should be a boolean value.');
@@ -40,7 +38,6 @@ export class LineParser extends stream.Transform {
       this.delimiter = opts.delimiter;
     }
   }
-  
   
   _transform(chunk: Buffer, encoding: string, cb: EVCb<any>) {
     

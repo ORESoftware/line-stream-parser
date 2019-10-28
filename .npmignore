@@ -1,5 +1,6 @@
 
 ### folders
+
 node_modules
 scripts
 test
@@ -14,18 +15,20 @@ docs
 .github
 
 ### files
+
 .editorconfig
 .gitattributes
 .gitignore
 .npmignore
 .dockerignore
-.travis.yml
-
 
 ### matching
+
 *.log
 *Dockerfile*
 *.md
 *.tgz
-tsconfig*.json
+*.yml
+*.yaml
+*.json
 
