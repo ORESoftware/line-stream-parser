@@ -1,12 +1,11 @@
 {
   "name": "@oresoftware/line-stream-parser",
-  "version": "0.0.1001",
+  "version": "0.0.102",
   "description": "Semver-oriented TypeScript library skeleton.",
-  "main": "dist/main.js",
   "bin": {
-    "example": "cli/example.sh",
-    "example.js": "cli/example.js"
+    "parse_lines": "cli/lsp.js"
   },
+  "main": "dist/main.js",
   "types": "dist/main.d.ts",
   "typings": "dist/main.d.ts",
   "scripts": {
@@ -24,15 +23,16 @@
     "skeleton",
     "scaffold"
   ],
-  "author": "YOUR NAME HERE",
-  "license": "SEE LICENSE IN license.md",
+  "author": "Olegzandr V.D.",
+  "readme": "",
+  "license": "SEE LICENSE IN ",
   "bugs": {
     "url": "https://github.com/ORESoftware/typescript-library-skeleton/issues"
   },
   "homepage": "https://github.com/ORESoftware/typescript-library-skeleton#readme",
   "dependencies": {},
   "devDependencies": {
-    "@types/node": "^10.12.10",
+    "@types/node": "^12.12.10",
     "typescript": "^3.4.5"
   }
 }

@@ -8,7 +8,7 @@ export const r2gSmokeTest = function () {
   return true;
 };
 
-type EVCb<T> = (err: any, T: any) => void;
+type EVCb<T> = (err?: any, T?: any) => void;
 
 export interface JSONParserOpts {
   debug?: boolean,
@@ -18,12 +18,9 @@ export interface JSONParserOpts {
   includeByteCount?: boolean
 }
 
-export const RawJSONBytesSymbol = Symbol('raw.json.bytes');
-export const JSONBytesSymbol = Symbol('json.bytes');
-
 export class LineParser extends stream.Transform {
   
-  buffer = Buffer.from('');
+  buf = Buffer.from('');
   debug = false;
   delimiter = '\n';
   
@@ -45,9 +42,9 @@ export class LineParser extends stream.Transform {
   }
   
   
-  _transform(chunk: Buffer, encoding: string, cb: Function) {
+  _transform(chunk: Buffer, encoding: string, cb: EVCb<any>) {
     
-    const c = Buffer.concat([this.buffer, chunk]);
+    const c = Buffer.concat([this.buf, chunk]);
     let b: Array<any> = [];
     
     for (let v of c.values()) {
@@ -63,17 +60,17 @@ export class LineParser extends stream.Transform {
       b.push(v);
     }
     
-    this.buffer = Buffer.from(b);
+    this.buf = Buffer.from(b);
     
-    cb();
+    cb(null);
     
   }
   
-  _flush(cb: Function) {
+  _flush(cb: EVCb<any>) {
     
-    if(this.buffer.length > 0){
-      this.push(this.buffer);
-      this.buffer = Buffer.from('');
+    if(this.buf.length > 0){
+      this.push(this.buf);
+      this.buf = Buffer.from('');
     }
     
     cb();
